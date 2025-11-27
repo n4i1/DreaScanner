@@ -1,0 +1,2 @@
+# DreaScanner
+Simple bluetooth scanner.
