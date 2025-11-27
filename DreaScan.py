@@ -16,6 +16,7 @@ import shutil
 from datetime import datetime
 from typing import Dict, Any
 from bleak import BleakScanner
+import re
 
 # ---------- Config ----------
 SCAN_TIMEOUT = 5.0        # seconds per BLE scan
@@ -270,7 +271,7 @@ def render_dashboard(devices):
     count = max(1, len(visible_devices))
     idx_col = max(3, len(str(count)) + 2)  # space for numbers + padding
     rssi_col = 5
-    signal_col = 15  # Widened signal column (bar + %)
+    signal_col = 21  # Widened signal column (bar + %) — increased by 6
     last_seen_col = 16
 
     # Initial bar width proposal, then adapt to remaining space
@@ -280,7 +281,8 @@ def render_dashboard(devices):
     # There are 4 separators (spaces) between columns in the printed line (removed Address)
     separators = 4
     name_col = columns - (idx_col + rssi_col + signal_col + last_seen_col + separators)
-    name_col = max(8, min(30, name_col))
+    # Make name column a bit smaller to give more room to the signal column
+    name_col = max(6, min(24, name_col))
 
     # Recompute bar width based on the finalized columns
     bar_width = int(signal_col * 0.6)
@@ -303,18 +305,47 @@ def render_dashboard(devices):
         rssi_text = str(rssi) if rssi is not None else "---"
         percentage = rssi_to_percentage(rssi)
 
-        # Build bar field: colored blocks plus padding spaces (padding counts visible chars)
-        if bar_width > 0:
-            padding = bar_width - filled_len
-            bar_field = (bar_colored if filled_len > 0 else '') + (" " * max(0, padding))
-        else:
-            bar_field = ''
+        # Helper to compute visible length (strip ANSI escape sequences)
+        def vis_len(s: str) -> int:
+            return len(re.sub(r'\x1b\[[0-9;]*m', '', s))
 
-        # Append percentage label to bar field
-        signal_display = f"{bar_field}{percentage:>3}%"
+        # Reserve a fixed width on the right of the Signal column for the percentage
+        percent_width = 4  # e.g. '100%'
+        bar_area_width = max(0, signal_col - percent_width)
 
-        name_display = (name[:name_col]) if len(name) > name_col else name
-        print(f"{idx:<{idx_col}} {name_display:{name_col}} {rssi_text:>{rssi_col}} {signal_display:{signal_col}} {last_seen}")
+        # Compute how many blocks to draw based on percentage, clamped to bar_area_width
+        pct = clamp(percentage, 0, 100)
+        filled_blocks = int((pct / 100.0) * bar_area_width) if bar_area_width > 0 else 0
+        bar_plain = "█" * filled_blocks
+        bar_colored = GOLD + bar_plain + RESET if filled_blocks > 0 else ''
+        # Pad the bar area to its full width (visible chars)
+        bar_padding = " " * max(0, bar_area_width - filled_blocks)
+        bar_field = (bar_colored if filled_blocks > 0 else '') + bar_padding
+
+        # Percentage field always right-aligned in its reserved width
+        percent_str = f"{percentage:>3}%"
+        percent_field = percent_str.rjust(percent_width)
+
+        # Combine bar and percent into the signal field
+        signal_field = bar_field + percent_field
+
+        # Prepare other columns with fixed visible widths
+        name_field = (name[:name_col]).ljust(name_col)
+        rssi_field = rssi_text.rjust(rssi_col)
+        last_seen_field = str(last_seen).rjust(last_seen_col)
+
+        # Compose the full line with single-space separators; fields already padded to visible widths
+        line = f"{str(idx).ljust(idx_col)} {name_field} {rssi_field} {signal_field} {last_seen_field}"
+        # Ensure the printed line does not exceed terminal width by truncating name if needed
+        if vis_len(line) > columns:
+            # truncate name to make it fit
+            excess = vis_len(line) - columns
+            cut = min(excess, len(name_field) - 1)
+            if cut > 0:
+                name_field = name_field[:-cut]
+                line = f"{str(idx).ljust(idx_col)} {name_field} {rssi_field} {signal_field} {last_seen_field}"
+
+        print(line)
 
     print("=" * columns)
     print("Commands: [1-N] inspect, h/hide, uh/unhide, s/summary, q/quit, ?/help")
@@ -412,6 +443,12 @@ async def input_listener():
                         print(f"Last Seen:   {info.get('last_seen', 'N/A')}", file=sys.stderr)
                         print(f"First RSSI:  {info.get('first_rssi', 'N/A')}", file=sys.stderr)
                         print(f"Last RSSI:   {info.get('last_rssi', 'N/A')}", file=sys.stderr)
+                        # Rough distance estimate based on last RSSI
+                        try:
+                            dist = rssi_to_distance_estimate(info.get('last_rssi'))
+                        except Exception:
+                            dist = '??'
+                        print(f"Distance:    {dist}", file=sys.stderr)
                         print(f"Scan Count:  {info.get('count', 0)}", file=sys.stderr)
                         print(GOLD + "======================" + RESET, file=sys.stderr)
                         print(GOLD + "(Press Enter to resume dashboard)" + RESET, file=sys.stderr)
