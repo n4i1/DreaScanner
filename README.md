@@ -56,27 +56,24 @@ This project was developed with AI-assisted code generation as part of a persona
 
 ## Screenshots
 
-Below are example screenshots showing the DreaScanner UI in typical states. To include these in the README, add the corresponding image files to `docs/screenshots/` (create the folder if it doesn't exist) and name them exactly as shown.
-
-Note: images are displayed smaller for readability — adjust the `width` values if you prefer larger or smaller thumbnails.
-
+Below are example screenshots showing the DreaScanner UI in typical states. 
 
 1. Recent devices (known hidden)
 
-<p align="center"><img src="docs/screenshots/50.png" alt="Recent devices (known hidden)" width="480"/></p>
+<p align="center"><img src="50.png" alt="Recent devices (known hidden)" width="480"/></p>
 
 2. Default dashboard view
 
-<p align="center"><img src="docs/screenshots/33.png" alt="Default dashboard" width="480"/></p>
+<p align="center"><img src="33.png" alt="Default dashboard" width="480"/></p>
 
 3. Device inspection (device #18)
 
-<p align="center"><img src="docs/screenshots/51.png" alt="Device inspection #18" width="480"/></p>
+<p align="center"><img src="51.png" alt="Device inspection #18" width="480"/></p>
 
 4. Tactical locator approaching a TV
 
-<p align="center"><img src="docs/screenshots/40.png" alt="Tactical locator approaching TV" width="480"/></p>
+<p align="center"><img src="40.png" alt="Tactical locator approaching TV" width="480"/></p>
 
 5. Sorted by closest-first view
 
-<p align="center"><img src="docs/screenshots/18.png" alt="Closest-first view" width="480"/></p>
+<p align="center"><img src="18.png" alt="Closest-first view" width="480"/></p>
