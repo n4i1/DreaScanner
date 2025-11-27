@@ -1,5 +1,5 @@
 # DreaScanner
-**DreaScanner — LARP Recon & Hacking Simulation Tool**
+**Drea Scanner — LARP Recon & Hacking Simulation Tool**
 
 A tactical BLE device scanner designed for immersive Star Wars-themed live action role-play. DreaScanner simulates advanced recon and electronic warfare capabilities when deployed on DR-3A (a Raspberry Pi droid), enabling players to locate, track, and analyze wireless devices in real-time.
 
@@ -16,7 +16,7 @@ A tactical BLE device scanner designed for immersive Star Wars-themed live actio
 ## Usage
 
 ```bash
-python3 DreaScan.py
+python3 DreaScan03.py
 ```
 
 ### Commands
@@ -47,5 +47,9 @@ Real-time BLE scanning over 5-second cycles.
 
 **⚠️ Hobby Use Only**  
 This tool is designed for recreational LARP scenarios and hobby projects. Not intended for unauthorized device tracking or security vulnerabilities.
+
+**Project Note**
+
+This project was developed with AI-assisted code generation as part of a personal learning exercise. It is intended for educational and hobby use to explore BLE scanning, terminal UIs, and small tooling workflows.
 
 **© Drea Corporation**
