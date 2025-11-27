@@ -1,7 +1,7 @@
-# DR-3A Surveillance Grid
+# DreaScanner
 **Drea Corporation — LARP Recon & Hacking Simulation Tool**
 
-A tactical BLE device scanner designed for immersive Star Wars-themed live action role-play. DreaScanner simulates advanced recon and electronic warfare capabilities, enabling players to locate, track, and analyze wireless devices in real-time.
+A tactical BLE device scanner designed for immersive Star Wars-themed live action role-play. DreaScanner simulates advanced recon and electronic warfare capabilities when deployed on DR-3A (a Raspberry Pi droid), enabling players to locate, track, and analyze wireless devices in real-time.
 
 ## Features
 
@@ -37,7 +37,11 @@ python3 DreaScan03.py
 
 ## Deployment
 
-Optimized for deployment on Android tablets via Termux with real-time BLE scanning over 5-second cycles.
+Optimized for deployment on:
+- **Raspberry Pi (DR-3A droid)** – Primary deployment platform
+- **Android tablets via Termux** – Mobile reconnaissance
+
+Real-time BLE scanning over 5-second cycles.
 
 ---
 
