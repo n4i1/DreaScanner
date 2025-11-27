@@ -49,31 +49,30 @@ Real-time BLE scanning over 5-second cycles.
 This tool is designed for recreational LARP scenarios and hobby projects. Not intended for unauthorized device tracking or security vulnerabilities.
 
 **Project Note**
-
 This project was developed with AI-assisted code generation as part of a personal learning exercise. It is intended for educational and hobby use to explore BLE scanning, terminal UIs, and small tooling workflows.
 
 **© Drea Corporation**
 
 ## Screenshots
 
-Below are example screenshots showing the DreaScanner UI in typical states. 
+Below are example screenshots showing the DreaScanner UI in typical states. Image files are placed next to this `README.md` file in the repository and use the `.jpg` format.
 
 1. Recent devices (known hidden)
 
-<p align="center"><img src="50.png" alt="Recent devices (known hidden)" width="480"/></p>
+<p align="center"><img src="50.jpg" alt="Recent devices (known hidden)" width="480"/></p>
 
 2. Default dashboard view
 
-<p align="center"><img src="33.png" alt="Default dashboard" width="480"/></p>
+<p align="center"><img src="33.jpg" alt="Default dashboard" width="480"/></p>
 
 3. Device inspection (device #18)
 
-<p align="center"><img src="51.png" alt="Device inspection #18" width="480"/></p>
+<p align="center"><img src="51.jpg" alt="Device inspection #18" width="480"/></p>
 
 4. Tactical locator approaching a TV
 
-<p align="center"><img src="40.png" alt="Tactical locator approaching TV" width="480"/></p>
+<p align="center"><img src="40.jpg" alt="Tactical locator approaching TV" width="480"/></p>
 
 5. Sorted by closest-first view
 
-<p align="center"><img src="18.png" alt="Closest-first view" width="480"/></p>
+<p align="center"><img src="18.jpg" alt="Closest-first view" width="480"/></p>
