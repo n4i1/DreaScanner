@@ -10,7 +10,7 @@ A tactical BLE device scanner designed for immersive Star Wars-themed live actio
 - **Tactical Locator Mode** – Target and track individual devices with live RSSI trends and distance estimation
 - **Sortable Dashboard** – Organize devices by discovery order or proximity (closest first)
 - **Device Filtering** – Hide/unhide devices to focus on new targets
-- **CSV Logging** – Complete audit trail of all scanned devices and timestamps
+- **CSV Logging** – Timestamped audit trail with automatic session numbering (prevents overwrites)
 - **Responsive TUI** – Adaptive terminal layout optimized for mobile (Termux) and desktop deployment
 
 ## Usage
