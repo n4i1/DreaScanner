@@ -16,7 +16,7 @@ A tactical BLE device scanner designed for immersive Star Wars-themed live actio
 ## Usage
 
 ```bash
-python3 DreaScan03.py
+python3 DreaScan.py
 ```
 
 ### Commands
