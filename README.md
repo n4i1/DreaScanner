@@ -1,7 +1,7 @@
 # DR-3A Surveillance Grid
 **Drea Corporation — LARP Recon & Hacking Simulation Tool**
 
-A tactical BLE device scanner designed for immersive Star Wars-themed live action role-play. DR-3A simulates advanced recon and electronic warfare capabilities, enabling players to locate, track, and analyze wireless devices in real-time.
+A tactical BLE device scanner designed for immersive Star Wars-themed live action role-play. DreaScanner simulates advanced recon and electronic warfare capabilities, enabling players to locate, track, and analyze wireless devices in real-time.
 
 ## Features
 
