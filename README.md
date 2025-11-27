@@ -55,7 +55,7 @@ This project was developed with AI-assisted code generation as part of a persona
 
 ## Screenshots
 
-Below are example screenshots showing the DreaScanner UI in typical states. Image files are placed next to this `README.md` file in the repository and use the `.jpg` format.
+Below are example screenshots showing the DreaScanner UI in typical states. 
 
 1. Recent devices (known hidden)
 
