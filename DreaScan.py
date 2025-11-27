@@ -18,7 +18,6 @@ from typing import Dict, Any
 from bleak import BleakScanner
 
 # ---------- Config ----------
-LOG_FILE = "ble_scan_log.csv"
 SCAN_TIMEOUT = 5.0        # seconds per BLE scan
 TUI_REFRESH = 5.0         # seconds between dashboard refreshes
 MIN_RSSI = -100
@@ -26,6 +25,24 @@ MAX_RSSI = -30
 BAR_MAX_WIDTH_RATIO = 0.4
 DEBUG = False             # Set to True to see raw device RSSI extraction
 # ----------------------------
+
+# Generate unique log file with running number and date
+def get_log_filename():
+    import glob
+    from pathlib import Path
+    today = datetime.now().strftime("%d-%m-%y")
+    existing = glob.glob("*_*-*-*_log.csv")
+    max_num = 0
+    for f in existing:
+        try:
+            num = int(f.split('_')[0])
+            max_num = max(max_num, num)
+        except ValueError:
+            pass
+    next_num = max_num + 1
+    return f"{next_num:03d}_{today}_log.csv"
+
+LOG_FILE = get_log_filename()
 
 CSI = "\x1b["
 RESET = CSI + "0m"
