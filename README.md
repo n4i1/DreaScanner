@@ -1,5 +1,5 @@
 # DreaScanner
-**Drea Corporation — LARP Recon & Hacking Simulation Tool**
+**DreaScanner — LARP Recon & Hacking Simulation Tool**
 
 A tactical BLE device scanner designed for immersive Star Wars-themed live action role-play. DreaScanner simulates advanced recon and electronic warfare capabilities when deployed on DR-3A (a Raspberry Pi droid), enabling players to locate, track, and analyze wireless devices in real-time.
 
